@@ -1,0 +1,18 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <a mat-button>
+        <mat-icon>menu</mat-icon>
+    </a>
+    <span>Spot the DJ</span>
+    <span class="example-spacer"></span>
+    <a mat-flat-button *ngIf="!authenticated">
+      Login via Spotify
+    </a>
+    <div *ngIf="authenticated">
+      <a>
+        <div class="round-icon"></div>
+      </a>
+      <h3>User Name</h3>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

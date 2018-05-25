@@ -1,0 +1,21 @@
+.container {
+    padding: 16px 50px;
+    display: flex;
+    flex-direction: row-reverse;
+    width: 50%;
+    align-items: center;
+    .intro-header-img img {
+        height: 100px;
+        width: 100px;
+    }
+    .intro-header-text {
+        padding-left: 20px;
+        align-self: center;
+        h2 {
+            margin-bottom: 0;
+        }
+        p {
+            margin-top: 8px;
+        }
+    }
+}
