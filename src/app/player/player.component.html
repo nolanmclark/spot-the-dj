@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="now-playing" *ngIf="connected && ready">
+        <h3>Now Playing: </h3>
+        <div class="album-info">
+            <div class="album-art">
+                <img src="{{albumImageUrl}}" />
+              </div>
+              <p class="song">{{currentSong}}</p>
+              <p class="artist">{{currentArtist}}</p>
+        </div>
+    </div>
+    <mat-progress-bar [color]="primary" [mode]="determinate" [value]="progressValue" style="max-width: 100%;"></mat-progress-bar>
+
+    <p *ngIf="!connected && !ready">Not Connected</p>
+    <p *ngIf="!connected && ready">Ready for Device</p>
+    <p *ngIf="connected && ready">Connected</p>
+    <div class="actions">
+        <a mat-raised-button class="btn" color="primary" (click)="startPlayer()">Initialize Player</a>
+        <a mat-stroked-button  class="btn" color="primary" (click)="startedSong()">Started Song</a>
+    </div>
+</div>

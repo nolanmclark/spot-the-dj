@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LoginService } from './login.service';
+import { PlayerService } from './player.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,12 @@ import { LoginService } from './login.service';
 })
 export class AppComponent {
   title = 'app';
-  constructor(public spotifyAPI: LoginService) {
-    this.spotifyAPI.login();
+
+  constructor(public spotifyAPI: LoginService, public playerService: PlayerService) {
+    if (localStorage.getItem("spotify-token") === null) {
+      this.spotifyAPI.login();
+    } else {
+      this.spotifyAPI.accessToken = localStorage.getItem("spotify-token");
+    }
   }
 }

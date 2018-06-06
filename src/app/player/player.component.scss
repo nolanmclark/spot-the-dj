@@ -1,0 +1,52 @@
+
+.btn {
+    margin-right: 10px;
+}
+
+.actions {
+    display: flex;
+    flex-direction: row;
+}
+
+.container {
+    padding: 26px 50px;
+    overflow: hidden;
+    background: #fff;
+    height: 100vh;
+    h1 {
+        margin-bottom: 0;
+    }
+}
+
+.now-playing {
+    margin-bottom: 40px;
+    text-align: center;
+        h1 {
+        margin-top: 0;
+    }
+}
+
+.album-info {
+    display: flex;
+    flex-direction: column;
+    .album-art {
+        img {
+            height: 225px;
+        }
+    }
+}
+
+
+.song {
+    margin: 5px 0;
+    padding: 0;
+    font-size: 1.2em;
+    font-weight: 400;
+}
+
+.artist {
+    margin: 0;
+    padding: 0;
+    font-size: 1em;
+    font-weight: 500;
+}

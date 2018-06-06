@@ -1,4 +1,7 @@
 <div class="now-playing-container">
+  <a mat-stroked-button color="primary" routerLink="/player">
+    Go to Player
+  </a>
   <h1 (click)="getPlaylists()">Now Playing - {{message}}</h1>
   <app-now-playing *ngFor="let item of nowPlaying; let i = index;" [image]="item.images[0]" [name]="item.name"></app-now-playing>
 </div>

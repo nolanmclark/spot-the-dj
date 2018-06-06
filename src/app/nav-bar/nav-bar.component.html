@@ -3,16 +3,21 @@
     <a mat-button>
         <mat-icon>menu</mat-icon>
     </a>
-    <span>Spot the DJ</span>
+    <span routerLink="/home">Spot the DJ</span>
     <span class="example-spacer"></span>
-    <a mat-flat-button *ngIf="!authenticated">
+    <a mat-flat-button *ngIf="!authenticated" (click)="login()">
       Login via Spotify
     </a>
-    <div *ngIf="authenticated">
-      <a>
-        <div class="round-icon"></div>
-      </a>
-      <h3>User Name</h3>
+    <mat-menu #appMenu="matMenu">
+        <button mat-menu-item (click)="logout()">Logout</button>
+      </mat-menu>
+    <div *ngIf="authenticated" class="user-information">
+      <a class="drop-down" mat-button [matMenuTriggerFor]="appMenu">
+        <div class="round-icon">
+          <img class="profile-img" src="{{user?.images[0].url}}" />
+        </div>
+      <h3>{{user?.display_name}}</h3>
+    </a>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>

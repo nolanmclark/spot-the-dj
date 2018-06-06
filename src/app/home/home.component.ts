@@ -10,6 +10,7 @@ export class HomeComponent implements OnInit {
 
   nowPlaying: any = [];
   message: string;
+  user: any;
 
   constructor(public spotifyAPI: LoginService) { 
     setTimeout(() => {

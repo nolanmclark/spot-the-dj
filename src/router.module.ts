@@ -4,6 +4,7 @@ import { HomeComponent } from './app/home/home.component';
 import { LoginComponent } from './app/login/login.component';
 import { RegisterComponent } from './app/register/register.component';
 import { ForgotPasswordComponent } from './app/forgot-password/forgot-password.component';
+import { PlayerComponent } from './app/player/player.component';
 
 const appRoutes: Routes = [
     {
@@ -14,6 +15,10 @@ const appRoutes: Routes = [
     {
       path: 'home',
       component: HomeComponent
+    },
+    {
+      path: 'player',
+      component: PlayerComponent
     },
     {
       path: 'login',

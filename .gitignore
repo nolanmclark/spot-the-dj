@@ -7,7 +7,7 @@
 
 # dependencies
 /node_modules
-/src/app/app.spotify.config.tsc
+/src/app/app.spotify.config.ts
 /bower_components/
 
 # IDEs and editors
@@ -39,3 +39,4 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+src/app/app.spotify.config.ts

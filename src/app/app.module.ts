@@ -13,6 +13,9 @@ import { AppRoutingModule } from '../router.module';
 import { NowPlayingComponent } from './now-playing/now-playing.component';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { PlayerComponent } from './player/player.component';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     RegisterComponent,
     ForgotPasswordComponent,
-    NowPlayingComponent
+    NowPlayingComponent,
+    PlayerComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +37,9 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     MatToolbarModule,
     MatIconModule,
-    MatButtonModule, MatCheckboxModule
+    MatButtonModule, MatCheckboxModule,
+    MatMenuModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
