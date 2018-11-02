@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="now-playing" *ngIf="connected && ready">
+    <div class="now-playing" *ngIf="connected && ready && playing">
         <h3>Now Playing: </h3>
         <div class="album-info">
             <div class="album-art">
@@ -17,5 +17,10 @@
     <div class="actions">
         <a mat-raised-button class="btn" color="primary" (click)="startPlayer()">Initialize Player</a>
         <a mat-stroked-button  class="btn" color="primary" (click)="startedSong()">Started Song</a>
+        <a mat-raised-button  class="btn" color="primary" (click)="playSong()">
+          Next Song
+          <mat-icon>skip_next</mat-icon>
+        </a>
     </div>
+
 </div>

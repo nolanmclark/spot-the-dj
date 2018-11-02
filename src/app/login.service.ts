@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Http, Headers, RequestOptions, RequestOptionsArgs } from '@angular/http';
 import { SPOTIFY_CONFIG } from './app.spotify.config';
-import { map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpParams, HttpResponse, HttpRequest } from '@angular/common/http';
 import { Observable, from } from 'rxjs';
 
@@ -17,23 +16,9 @@ export class LoginService {
   private tokenType: string;
   private apiBase = "https://api.spotify.com/v1/";
 
-  constructor(private http: HttpClient ) { 
+  constructor(private http: HttpClient) { 
 
   }
-
-  // login() {
-  //     let authorizationTokenUrl = `https://accounts.spotify.com/api/token`;
-      // const httpOptions = {
-      //   headers: new HttpHeaders().set('Authorization', 'Basic  ' + btoa(this.client_id + ':' + this.client_secret)).set('Content-Type', 'application/x-www-form-urlencoded')
-      // }
-  //     let body = 'grant_type=client_credentials';
-  //     this.http.post(authorizationTokenUrl, body, httpOptions).pipe(map((data: Http) => {
-  //       this.accessToken = data['access_token'];
-  //       console.log(data);
-  //     })).subscribe((res) => {
-
-  //     })
-  // }
 
   //#region login
   login() {
@@ -47,7 +32,7 @@ export class LoginService {
         client_id: this.client_id,
         redirect_uri: 'http://localhost:4200/login',
         response_type: 'token',
-        scope: ['streaming', 'user-read-birthdate', 'user-read-email', 'user-read-private']
+        scope: ['user-follow-modify', 'user-follow-read', 'playlist-read-private', 'playlist-read-collaborative', 'playlist-modify-public', 'playlist-modify-private', 'user-library-read', 'user-library-modify', 'user-read-private', 'user-read-playback-state','user-modify-playback-state', 'user-read-currently-playing']
       };
       var authCompleted = false;
       var authWindow = this.openDialog(
@@ -69,6 +54,7 @@ export class LoginService {
           authCompleted = true;
 
           this.accessToken = e.newValue;
+          localStorage.setItem('accessToken', e.newValue);
           window.removeEventListener('storage', storageChanged, false);
 
           return resolve(e.newValue);
@@ -102,6 +88,28 @@ export class LoginService {
     }
     return this.http.get(`${this.apiBase}me`, httpOptions);
   }
+
+  getUserDevices() {
+  const httpOptions = {
+    headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.accessToken)
+  }
+  return this.http.get(`${this.apiBase}me/player/devices`, httpOptions);
+}  
+  getUserPlaying() {
+    const httpOptions = {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.accessToken)
+    }
+    return this.http.get(`${this.apiBase}me/player/currently-playing`, httpOptions);
+  }  
+
+  playSong(uri) {
+    const httpOptions = {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.accessToken)
+    }
+    const body = {"uris": [uri] };
+    return this.http.put(`${this.apiBase}me/player/play`, body, httpOptions)
+  }
+
 
   //#endregion
 

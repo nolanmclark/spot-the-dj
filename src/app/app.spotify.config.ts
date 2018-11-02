@@ -1,5 +1,5 @@
 export const SPOTIFY_CONFIG = {
     clientId: "29b32b21ae8f4772a963a46c422514a7",
     clientSecret: "aa4c8acc06be4a2f838a5573ddec4fb7",
-    sdkKey: 'BQCZiKoW8ht_dWd7IguV6zx9d1fp6eQ-2qFmnGJnGQB3vmWl49_1s6W-lDlPIeUfJR9MEo-xauKLStusSVG3iAcRVaO6xbmZtUMeLK1Rj3ayh_gItVvSwSie8JKi27HUgwuXA_1Ylo3IyKY2AoVBmU10SRGtaVsqyWyw1pI'
+    sdkKey: 'BQA-f_h4PA7qoPyPcTEGWSw0WGlhHQt4CJ_rq5GWdP_lpkHkdGvI4mNzzOdApvwZq4Z3kWV9PXLj2Q8vsJyjKm1yVVTpseSjD_hcGahUYWweYWSADHes8Se202Cp6gw9nxIaBHe00WzLzGMOa02MGxH8IhD9qlJy8gODvpE'
 }

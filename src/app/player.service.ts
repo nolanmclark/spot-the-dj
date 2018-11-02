@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import {SPOTIFY_CONFIG } from './app.spotify.config';
+
 declare var Spotify;
 
 @Injectable({
@@ -13,10 +14,13 @@ export class PlayerService {
   public currentState = this.state.asObservable();
   private ready = new BehaviorSubject<any>(false);
   public isReady = this.ready.asObservable();
+  private currentProgress = new BehaviorSubject<any>(false);
+  public getProgress = this.currentProgress.asObservable();
 
   public player: any;
 
-  constructor() {}
+  constructor() {
+  }
 
   initPlayer() {
     if (window) {
@@ -29,7 +33,7 @@ export class PlayerService {
     (<any>window).onSpotifyWebPlaybackSDKReady = () => {
       const token = this.sdkToken;
       const player = new Spotify.Player({
-        name: 'Web Playback SDK Quick Start Player',
+        name: 'SpotTheDJ',
         getOAuthToken: cb => { cb(token); }
       });
       this.player = player;
@@ -43,7 +47,7 @@ export class PlayerService {
       // Playback status updates
       player.addListener('player_state_changed', (state) => { 
         this.state.next(state);
-        console.log(state); 
+        console.log(state);
       });
     
       // Ready
@@ -62,11 +66,27 @@ export class PlayerService {
     };
    }
 
+  animateValue(start, end, duration) {
+    clearInterval(timer);
+    let parent = this;
+    var range = end - start;
+    var current = start;
+    var increment = end > start? 1 : -1;
+    var stepTime = Math.abs(Math.floor(duration / range));
+    var timer = setInterval(() => {
+        current += increment;
+        this.currentProgress.next(current);
+        if (current == end) {
+            clearInterval(timer);
+        }
+    }, stepTime);
+  }
+
+  setProgress(int) {
+    this.currentProgress.next(int);
+  }
+
    getPlayer() {
      return this.currentState;
-   }
-
-   pause() {
-     this.player.pause();
    }
 }

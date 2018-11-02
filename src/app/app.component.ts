@@ -9,11 +9,13 @@ import { PlayerService } from './player.service';
 })
 export class AppComponent {
   title = 'app';
+  authenticated: boolean = false;
 
   constructor(public spotifyAPI: LoginService, public playerService: PlayerService) {
     if (localStorage.getItem("spotify-token") === null) {
-      this.spotifyAPI.login();
+      this.authenticated = false;
     } else {
+      this.authenticated = true;
       this.spotifyAPI.accessToken = localStorage.getItem("spotify-token");
     }
   }

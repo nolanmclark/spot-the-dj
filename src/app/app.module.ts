@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PlayerComponent } from './player/player.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { SplashComponent } from './splash/splash.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     ForgotPasswordComponent,
     NowPlayingComponent,
     PlayerComponent,
+    SplashComponent,
   ],
   imports: [
     BrowserModule,

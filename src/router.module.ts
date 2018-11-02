@@ -5,12 +5,17 @@ import { LoginComponent } from './app/login/login.component';
 import { RegisterComponent } from './app/register/register.component';
 import { ForgotPasswordComponent } from './app/forgot-password/forgot-password.component';
 import { PlayerComponent } from './app/player/player.component';
+import { SplashComponent } from './app/splash/splash.component';
 
 const appRoutes: Routes = [
     {
       path: '',
-      redirectTo: 'home',
+      redirectTo: 'splash',
       pathMatch: 'full'
+    },
+    {
+      path: 'splash',
+      component: SplashComponent
     },
     {
       path: 'home',
